@@ -11,16 +11,21 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/react-helmet": "^6.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
+    "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
   "keywords": [
-    "https://dribbble.com/shots/7524299-Personal-Portfolio-CV-Resume-Template"
+    "https://dribbble.com/shots/7524299-Personal-Portfolio-CV-Resume-Template",
+    "https://dribbble.com/shots/14270508-Fitness-Workout-App-UI-Kit/attachments/5920797?mode=media"
   ],
   "scripts": {
     "start": "react-scripts start",

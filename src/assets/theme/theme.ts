@@ -1,22 +1,24 @@
 import {createTheme, responsiveFontSizes, ThemeOptions} from "@material-ui/core";
+import {ThemeMode} from "../../utilities/types";
 
-const theme: ThemeOptions = responsiveFontSizes(
+const theme = (type: ThemeMode): ThemeOptions => responsiveFontSizes(
     createTheme({
         palette: {
-            type: 'light',
+            type,
             primary: {
                 main: '#f05d7a',
             },
             secondary: {
-                main: '#081e48',
+                main: type === 'light' ? '#081e48' : '#6f7a92',
             },
             background: {
-                default: '#f1f4f9',
+                default: type === 'light' ? '#f1f4f9' : '#2a2e42',
+                paper: type === 'light' ? '#fff' : '#353a4e',
             },
             text: {
-                primary: '#081e48',
-                secondary: '#f05d7a',
-                disabled: '#abb1ce',
+                primary: type === 'light' ? '#081e48' : '#fff',
+                secondary: type === 'light' ? '#f05d7a' : '#6f7a92',
+                disabled: type === 'light' ? '#abb1ce' : 'rgba(255, 255, 255, 0.5)',
             },
         },
         typography: {
@@ -73,13 +75,19 @@ const theme: ThemeOptions = responsiveFontSizes(
         },
         props: {
             MuiAppBar: {
-                color: 'default',
+                color: type === 'light' ? 'default' : 'inherit',
             },
             MuiTooltip: {
                 arrow: true,
             },
         },
         overrides: {
+            MuiAppBar: (type === 'light' ? {} : {
+                colorInherit: {
+                    backgroundColor: '#353a4e',
+                    color: '#fff',
+                },
+            }) as any,
             MuiButton: {
                 root: {
                     boxShadow: `0px 20px 60px -25px rgba(240,93,122,0.58) !important`,

@@ -16,7 +16,7 @@ export default makeStyles((theme: Theme) => ({
         justifyContent: 'center',
     },
     Text: {
-        marginBottom: theme.spacing(2),
+        marginBottom: `${theme.spacing(2)}px !important`,
     },
     '@keyframes AppLogoSpin': {
         from: {
