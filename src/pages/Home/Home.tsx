@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStore} from "../../utilities/types";
 import {toggleTheme} from "../../utilities/helpers";
 import Seo from "../../components/Seo/Seo";
+import Link from "../../components/Link";
 
 export default function Home() {
     const classes = HomeStyle();
@@ -27,6 +28,11 @@ export default function Home() {
                 >
                     {mode === 'light' ? 'Dark Mode' : 'Light Mode'}
                 </Button>
+                <Link href={'/profile'}>
+                    <Button variant={'outlined'} color={'primary'}>
+                        Profile
+                    </Button>
+                </Link>
             </Box>
         </Box>
     );

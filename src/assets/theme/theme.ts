@@ -1,130 +1,156 @@
 import {createTheme, responsiveFontSizes, ThemeOptions} from "@material-ui/core";
-import {ThemeMode} from "../../utilities/types";
 
-const theme = (type: ThemeMode): ThemeOptions => responsiveFontSizes(
+const theme = (dark: boolean): ThemeOptions => responsiveFontSizes(
     createTheme({
         palette: {
-            type,
+            type: dark ? "dark" : "light",
             primary: {
-                main: '#f05d7a',
+                main: "#FCA929",
+                contrastText: "#ffffff"
             },
             secondary: {
-                main: type === 'light' ? '#081e48' : '#6f7a92',
-            },
-            background: {
-                default: type === 'light' ? '#f1f4f9' : '#2a2e42',
-                paper: type === 'light' ? '#fff' : '#353a4e',
+                main: "#FAC4C4"
             },
             text: {
-                primary: type === 'light' ? '#081e48' : '#fff',
-                secondary: type === 'light' ? '#f05d7a' : '#6f7a92',
-                disabled: type === 'light' ? '#abb1ce' : 'rgba(255, 255, 255, 0.5)',
+                primary: dark ? "#D46A6A" : "#2E140A",
+                secondary: dark ? "#FAC4C4" : "#A58980"
+            },
+            background: {
+                default: dark ? '#0F0703' : '#F9F3F1',
+                paper: dark ? '#513B33' : '#fff',
+            },
+            info: {
+                main: "#D46A6A"
+            },
+            colors: {
+                primary: "#FCA929",
+                secondary: dark ? "#D46A6A" : "#FAC4C4",
+                backgroundDark: "#2E140A",
+                backgroundLight: "#F9F3F1",
+                secondaryDark: dark ? "#FAC4C4" : "#D46A6A",
+                gray: "#C4C4C4",
+                white: "#FFFFFF"
             },
         },
         typography: {
+            fontFamily: "Montserrat, Arial, Roboto, sans-serif",
+            fontWeightLight: 500,
+            fontWeightRegular: 500,
+            fontWeightMedium: 600,
+            fontWeightBold: 700,
+            fontSize: 14,
             h1: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
+                fontSize: 48,
+                fontWeight: 700
             },
             h2: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
+                fontSize: 36,
+                fontWeight: 700
             },
             h3: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
+                fontSize: 24,
+                fontWeight: 700
             },
             h4: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
+                fontSize: 24,
+                fontWeight: 700
             },
             h5: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
+                fontSize: 20,
+                fontWeight: 700
             },
             h6: {
-                fontWeight: 700,
-                fontFamily: 'Sora',
-            },
-            subtitle1: {
-                fontFamily: 'Montserrat',
-            },
-            subtitle2: {
-                fontFamily: 'Montserrat',
+                fontSize: 20,
+                fontWeight: 700
             },
             body1: {
-                fontFamily: 'Montserrat',
+                fontSize: 14,
+                fontWeight: 500
             },
             body2: {
-                fontFamily: 'Montserrat',
+                fontSize: 15,
+                fontWeight: 500
             },
             button: {
-                fontFamily: 'Sora',
-                fontWeight: 700,
-                textTransform: 'none',
-            },
-            caption: {
-                fontFamily: 'Montserrat',
-            },
-            overline: {
-                fontFamily: 'Montserrat',
-            },
-        },
-        shape: {
-            borderRadius: 5,
+                fontSize: 14,
+                fontWeight: 500
+            }
         },
         props: {
-            MuiAppBar: {
-                color: type === 'light' ? 'default' : 'inherit',
-            },
             MuiTooltip: {
-                arrow: true,
-            },
+                arrow: true
+            }
         },
         overrides: {
-            MuiAppBar: (type === 'light' ? {} : {
-                colorInherit: {
-                    backgroundColor: '#353a4e',
-                    color: '#fff',
-                },
-            }) as any,
+            MuiDivider: {
+                root: {
+                    backgroundColor: `${dark ? "#FAC4C4" : "#A58980"}`,
+                    marginTop: "32px",
+                    marginBottom: "32px"
+                }
+            },
+            MuiFab: {
+                root: {
+                    boxShadow: "none !important"
+                }
+            },
             MuiButton: {
                 root: {
-                    boxShadow: `0px 20px 60px -25px rgba(240,93,122,0.58) !important`,
+                    boxShadow: "none !important",
+                    padding: "6px 23px"
                 },
+                disableElevation: true,
+                label: {
+                    textTransform: "capitalize !important",
+                    borderRadius: "5px !important"
+                }
+            },
+            MuiPaper: {
+                root: {
+                    borderRadius: "10px !important"
+                }
+            },
+            MuiCard: {
+                root: {
+                    borderRadius: "10px !important"
+                }
             },
             MuiSwitch: {
                 root: {
                     width: 42,
                     height: 26,
                     padding: 0,
-                    margin: 8,
+                    margin: 8
                 },
                 switchBase: {
                     padding: 1,
-                    '&$checked, &$colorPrimary$checked, &$colorSecondary$checked': {
-                        transform: 'translateX(16px)',
-                        color: '#fff',
-                        '& + $track': {
+                    "&$checked, &$colorPrimary$checked, &$colorSecondary$checked": {
+                        transform: "translateX(16px)",
+                        color: "#fff",
+                        "& + $track": {
                             opacity: 1,
-                            border: 'none',
-                        },
-                    },
+                            border: "none"
+                        }
+                    }
                 },
                 thumb: {
                     width: 24,
-                    height: 24,
+                    height: 24
                 },
                 track: {
                     borderRadius: 13,
-                    border: '1px solid #bdbdbd',
-                    backgroundColor: '#fafafa',
+                    border: "1px solid #bdbdbd",
+                    backgroundColor: "#fafafa",
                     opacity: 1,
                     transition:
-                        'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-                },
-            },
-        },
-    }));
+                        "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
+                }
+            }
+        }
+    } as any),
+    {
+        variants: ["h1", "h2", "h3", "h4", "h5", "h6"]
+    }
+);
 
 export default theme;

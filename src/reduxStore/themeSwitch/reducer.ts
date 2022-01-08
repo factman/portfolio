@@ -3,7 +3,7 @@ import {SetThemeActionType} from "./actions";
 import Storage from "../../utilities/Storage";
 
 const defaultState: { mode: ThemeMode } = {
-    mode: Storage.getItem(StorageKeys.Theme, 'light'),
+    mode: Storage.getItem(StorageKeys.Theme, 'light') || 'light',
 };
 
 export function ThemeReducer(

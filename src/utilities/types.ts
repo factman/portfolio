@@ -1,8 +1,12 @@
 export type ThemeMode = 'light' | 'dark';
 
+export type UserObject = {
+    auth: boolean;
+};
+
 export type AppStore = {
     themeSwitch: { mode: ThemeMode };
-    user: { auth: boolean };
+    user: UserObject;
 };
 
 export enum ActionTypes {
